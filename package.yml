@@ -1,0 +1,14 @@
+package: community.lazycat.app.viniplay
+version: 0.11.0
+name: ViniPlay
+description: "一个功能强大、可自托管的 IPTV 播放器，具有现代化的网络界面"
+min_os_version: "1.5.0"
+homepage: https://github.com/ardoviniandrea/ViniPlay
+author: ardoviniandrea
+locales:
+  zh:
+    description: "一个功能强大、可自托管的 IPTV 播放器，具有现代化的网络界面"
+    name: ViniPlay
+  en:
+    description: "A powerful, self-hosted IPTV player with a modern web interface."
+    name: ViniPlay

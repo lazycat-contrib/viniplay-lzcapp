@@ -1,0 +1,18 @@
+application:
+  subdomain: viniplay
+  background_task: true
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://viniplay:8998/
+services:
+  viniplay:
+    # upstream: ardovini/viniplay:0.11.0
+    image: docker.1ms.run/ardovini/viniplay:0.11.0
+    environment:
+      - SESSION_SECRET={{ stable_secret "session_secret" }}
+      - VAPID_CONTACT_EMAIL=mailto:your_email@example.com
+    binds:
+      - /lzcapp/var/data:/data
+      - /lzcapp/var/dvr:/dvr

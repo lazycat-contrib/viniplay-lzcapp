@@ -1,0 +1,37 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: .lazycat-build/viniplay.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: viniplay
+build:
+  run_buildscript: false
+images:
+  # 上游有完整三段 SemVer tag（0.8.0~0.11.0），排除 latest/dev/main
+  - id: viniplay
+    target: service
+    service: viniplay
+    source: ardovini/viniplay
+    channel: stable
+    sort: semver
+    tag_regex: '^v?\d+\.\d+\.\d+$'
+    delivery:
+      mode: mirror
+stores:
+  official:
+    # Official store publication is intentionally disabled; publish only to Miaomiao Store.
+    enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: ViniPlay
+    summary: "一个功能强大、可自托管的 IPTV 播放器，具有现代化的网络界面"
